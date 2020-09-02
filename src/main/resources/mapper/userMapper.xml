@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.upstudy.dao.userMapper">
+
+    <!--增加一个user-->
+    <insert id="addUser" parameterType="User">
+        insert into users (userName,userSex,userAge) values
+        (#{userName},#{userSex},#{userAge})
+    </insert>
+
+    <!--根据id删除一个user-->
+    <delete id="deleteUserById" parameterType="int">
+        delete from users where userID=#{userId}
+    </delete>
+
+    <!--更新user-->
+    <update id="updateUser" parameterType="User">
+        update users
+        set userName = #{userName},userSex = #{userSex},userAge = #{userAge}
+        where userID = #{userId}
+    </update>
+
+    <!--根据id查询,返回一个user-->
+    <select id="queryUserById" resultType="User">
+        select * from users
+        where userID = #{userId}
+    </select>
+
+    <!--根据name查询,返回一个user-->
+    <select id="queryUserByName" resultType="User">
+        select * from users
+        where userName = #{userName}
+    </select>
+
+    <!--查询全部user-->
+    <select id="queryAllUser" resultType="User">
+        SELECT * from users
+    </select>
+
+</mapper>
